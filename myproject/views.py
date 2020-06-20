@@ -92,7 +92,13 @@ def add_event():
     flash(form.errors)
     return render_template('add_event.html',form=form)
 
-
+@core.route('/deleteevent/<int:event_id>')
+@login_required
+def delete_event(event_id):
+    event=Event.query.get(event_id)
+    db.session.delete(event)
+    db.session.commit()
+    return redirect(url_for('core.home'))
 
 
 @core.route('/viewevents')
