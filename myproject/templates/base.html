@@ -8,13 +8,14 @@
     <title>Remindor Reminder</title>
     <!-- CSS only -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-<link rel="stylesheet" href="card.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='card.css') }}">
 <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 <!-- JS, Popper.js, and jQuery -->
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg  navbar-dark bg-primary">
+  <div class="navbar-inverse">
+    <nav class="navbar navbar-expand-lg">
     <a class="navbar-brand" href="{{url_for('core.home')}}">Remindor Reminder</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -42,14 +43,15 @@
   {% else %}
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-        <li class="nav-item active"><a href="{{url_for('core.register')}}" class='nav-link'> Register</li></a>
-        <li class="nav-item active"><a href="{{url_for('core.login')}}" class='nav-link'>Log In</li></a>
+        <li class="nav-item "><a href="{{url_for('core.register')}}" class='nav-link'> Register</li></a>
+        <li class="nav-item "><a href="{{url_for('core.login')}}" class='nav-link'>Log In</li></a>
     </ul>
     </div>
 
 
     {% endif %}
 </nav>
+</div>
 {% with messages = get_flashed_messages() %}
 {% if messages %}
 
@@ -74,6 +76,48 @@
 {% endif %}
 {% endwith %}
 
+
+
+
+
+
+<!-- <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="./" class="navbar-brand">Bootstrap Menu</a>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="#">Home</a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Mission</a></li>
+            <li><a href="#">Vision</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Products</a>
+        </li>
+        <li>
+          <a href="#">Services</a>
+        </li>
+        <li class="active">
+          <a href="#">Contact</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header> -->
 {% block content %}{% endblock %}
 
 
