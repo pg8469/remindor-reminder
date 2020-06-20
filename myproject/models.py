@@ -2,7 +2,7 @@ from myproject import db,login_manager
 from werkzeug.security import check_password_hash,generate_password_hash
 from flask_login import UserMixin
 from datetime import datetime
-
+import pytz
 # This sets the callback for reloading a user from the session. The function you set
 # should take a user ID (a unicode) and return a user object, or None if the user 
 # does not exist.
@@ -56,7 +56,7 @@ class Event(db.Model):
     
     # Creating the foreign key (<tablename>.<attributename>)
     user_id=db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False)
-    event_creation_time=db.Column(db.DateTime,nullable=False,default=datetime.now())
+    event_creation_time=db.Column(db.DateTime,nullable=False,default=datetime.now(pytz.timezone('Asia/Calcutta')))
     scheduler_time=db.Column(db.DateTime,nullable=False)
     title=db.Column(db.String(512),nullable=False)
     five_min_reminded=db.Column(db.Boolean,default=False)
