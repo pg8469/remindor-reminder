@@ -79,7 +79,7 @@ def logout():
 def add_event():
     form=AddEventForm()
 #     form.scheduler_time.data=datetime.now(pytz.timezone('Asia/Calcutta'))
-    
+    time = datetime.now(pytz.timezone('Asia/Calcutta'))
     if form.validate_on_submit():
         event=Event(form.title.data,form.scheduler_time.data,current_user.id)
         
@@ -90,7 +90,7 @@ def add_event():
         return redirect(url_for('core.home'))
     # flash('First time register')
     flash(form.errors)
-    return render_template('add_event.html',form=form)
+    return render_template('add_event.html',form=form,time=time)
 
 @core.route('/deleteevent/<int:event_id>')
 @login_required
