@@ -4,6 +4,8 @@ from myproject.forms import AddEventForm,RegistrationForm,LoginForm,AddEventForm
 from myproject.models import User,Event
 from flask_login import login_required,login_user,logout_user,current_user
 import operator
+from datetime import datetime
+import pytz
 
 core=Blueprint('core',__name__)
 
@@ -76,6 +78,7 @@ def logout():
 @login_required
 def add_event():
     form=AddEventForm()
+    form.scheduler_time.data=datetime.now(pytz.timezone('Asia/Calcutta'))
     
     if form.validate_on_submit():
         event=Event(form.title.data,form.scheduler_time.data,current_user.id)
