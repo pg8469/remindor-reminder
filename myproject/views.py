@@ -9,7 +9,7 @@ import pytz
 
 core=Blueprint('core',__name__)
 
-
+timezone=pytz.timezone('Asia/Calcutta')
 
 
 @core.route('/',methods=['GET','POST'])
@@ -17,7 +17,7 @@ def home():
     if current_user.is_authenticated:
         events=current_user.events
         events.sort()
-        return render_template('home.html',events=events,event_count=str(len(events)))
+        return render_template('home.html',events=events,event_count=str(len(events)),timezone=timezone)
     else:
         return render_template('home.html')
 
