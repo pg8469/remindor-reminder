@@ -18,8 +18,8 @@ def background_func():
         if time_5_min_from_now>=event.scheduler_time and event.five_min_reminded == False:
             user_name=event.user_of_this_event.name
             # print(f'{user_name}, your task {event.title} is in 5 mins   notified at {time_now}')
-            send_email_of_5_mins(event.user_of_this_event,event)
-            event.five_min_reminded=True
+            if send_email_of_5_mins(event.user_of_this_event,event):
+                event.five_min_reminded=True
             
         # Check for 1 hour remaining 
         time_now=datetime.now()
@@ -28,8 +28,8 @@ def background_func():
         if time_1_hour_from_now>=event.scheduler_time and event.one_hour_reminded == False:
             user_name=event.user_of_this_event.name
             # print(f'{user_name}, your task {event.title} is in 1 hour  notified at {time_now}')
-            send_email_of_1_hour(event.user_of_this_event,event)
-            event.one_hour_reminded=True
+            if send_email_of_1_hour(event.user_of_this_event,event):
+                event.one_hour_reminded=True
             
     db.session.commit()
 

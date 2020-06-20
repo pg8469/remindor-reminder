@@ -25,12 +25,14 @@ def send_email_of_5_mins(user,event):
     email.set_content(cont)
     try:
         my_smtp.send_message(email)
+        return True
     except :
         print('Disconnection occured')
         my_smtp.connect(host='smtp.gmail.com',port=587)
         my_smtp.ehlo()
         my_smtp.starttls()
         my_smtp.login(vars.FROM_EMAIL_ID,vars.FROM_EMAIL_PASS)
+        return False
     
     
 def send_email_of_1_hour(user,event):
@@ -44,9 +46,11 @@ def send_email_of_1_hour(user,event):
     email.set_content(cont)
     try:
         my_smtp.send_message(email)
+        return True
     except :
         print('Disconnection occured')
         my_smtp.connect(host='smtp.gmail.com',port=587)
         my_smtp.ehlo()
         my_smtp.starttls()
         my_smtp.login(vars.FROM_EMAIL_ID,vars.FROM_EMAIL_PASS)
+        return False

@@ -4,6 +4,7 @@ from wtforms import StringField,PasswordField,SubmitField,IntegerField
 from wtforms.validators import DataRequired,EqualTo,Email,Length,Optional
 from wtforms import ValidationError
 from flask_wtf.file import FileAllowed,FileField
+import pytz
 
 # User based imports
 from flask_login import current_user
@@ -48,7 +49,7 @@ class LoginForm(FlaskForm):
         
 class AddEventForm(FlaskForm):
     title=StringField('Task Title ',validators=[DataRequired()])
-    scheduler_time=DateTimeLocalField('Time for the Task',validators=[DataRequired()],default=datetime.now, format='%Y-%m-%dT%H:%M')
+    scheduler_time=DateTimeLocalField('Time for the Task',validators=[DataRequired()],default=datetime.now(pytz.timezone('Asia/Calcutta')), format='%Y-%m-%dT%H:%M')
     submit=SubmitField('Add Task')
     
     
