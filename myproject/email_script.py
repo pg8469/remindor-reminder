@@ -21,7 +21,7 @@ def send_email_of_5_mins(user,event):
     del email['subject']
     email['to']=user.email
     email['subject']='Task Reminder'
-    cont = f'{user.name}, this is a reminder that your task "{event.title}" is in 5 mins'
+    cont = f'{user.name}, this is a reminder that your task "{event.title}" is in 5 mins\nScheduled Time: {event.scheduler_time.hour}:{event.scheduler_time.minute}'
     email.set_content(cont)
     try:
         my_smtp.send_message(email)
@@ -42,7 +42,7 @@ def send_email_of_1_hour(user,event):
     del email['subject']
     email['to']=user.email
     email['subject']='Task Reminder'
-    cont = f'{user.name}, this is a reminder that your task "{event.title}" is in 1 hour'
+    cont = f'{user.name}, this is a reminder that your task "{event.title}" is in 1 hour\nScheduled Time: {event.scheduler_time.hour}:{event.scheduler_time.minute}'
     email.set_content(cont)
     try:
         my_smtp.send_message(email)
