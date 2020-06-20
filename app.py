@@ -7,5 +7,5 @@ if __name__ == "__main__":
     
     scheduler.start()
     # app.run(debug=True)
-    app.run(use_reloader=False,debug=True)
+    app.run(use_reloader=False,debug=False)
     
