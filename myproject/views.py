@@ -78,7 +78,7 @@ def logout():
 @login_required
 def add_event():
     form=AddEventForm()
-    form.scheduler_time.data=datetime.now(pytz.timezone('Asia/Calcutta'))
+#     form.scheduler_time.data=datetime.now(pytz.timezone('Asia/Calcutta'))
     
     if form.validate_on_submit():
         event=Event(form.title.data,timezone.localize(form.scheduler_time.data),current_user.id)
