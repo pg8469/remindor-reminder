@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if current_user.is_authenticated %}
+<div class="jumbotron jumbotron-fluid">        
+    <div class="container">
+<h1 align='center'>{{current_user.name}}, you have {{event_count}} tasks pending </h1>
+<div align='center' style="padding-top: 1cm;">
+    <a href="{{url_for('core.add_event')}}"><button type="button" align="center" class="btn btn-success" > Add a new task</button>
+
+    </a>
+</div>
+</div>
+
+
+
+</div>
+
+{% for event in events %}
+        {{ element|e }}
+
+<div style="
+padding-left: 4in;
+padding-right: 4in;">
+<div class="card text-black mycard mb-3" align='center' style=" background-color: #73f0f5;
+padding-left: 1in;
+padding-right: 1in;">
+    <div class="card-body">
+      <h5 class="card-title">{{event.title}}</h5>
+      <span class="card-text">Due: {{event.scheduler_time.date()}}</span><br>
+      {% set h= event.scheduler_time.time() %}
+      
+      <span class="card-text">{{"{:02d}:{:02d}".format(h.hour,h.minute)}}</s pan>
+      <!-- <a href="#" class="btn btn-primary">Button</a>? -->
+
+    </div>
+ </div>
+ 
+</div>
+
+
+  {% endfor %}
+
+{% else %}
+
+
+
+
+
+<div class="jumbotron">
+
+
+    <div class="container">
+        <h2>Login/Register to add/view tasks</h2>
+        <p>This is a reminder webapp, you enter taks and will get notified 5 min and 1 hour before the schedulted time through email and/or message on phone number</p>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+{% endif %}
+
+
+
+{% endblock %}
+
+
+
+
+
+<!-- 
+
+<div class="container">
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    {{form.dtf(class='datepicker')}}
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+        </script>
+    </div>
+</div> -->

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 align='center' style="padding-top: 1cm;">Log In</h1>
+<div class="container" style="padding-top: 1cm;">
+    
+<form method='POST'>
+    {{form.hidden_tag()}}
+    <div class="form-group">
+      {{form.email.label}}
+      {{form.email(class='form-control')}}
+    </div>
+    <div class="form-group">
+        {{form.password.label()}}
+        {{form.password(class='form-control')}}
+      
+    </div>
+    
+    
+    {{form.submit(class='btn btn-primary')}}
+  </form>
+
+</div>
+{% endblock %}
+
+

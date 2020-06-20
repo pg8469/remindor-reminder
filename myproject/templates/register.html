@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 align='center' style="padding-top: 1cm;">Register a new User</h1>
+<h6 align='center' class='subtitle'>(Fields marked with<strong style="color: red;"> *</strong> are compulsory)</h6>
+<div class="container" style="padding-top: 1cm;">
+    
+<form method='POST'>
+    {{form.hidden_tag()}}
+    <div class="form-group">
+      {{form.email.label}}<strong style="color: red;"> *</strong>
+      {{form.email(class='form-control')}}
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+        {{form.name.label()}}<strong style="color: red;"> *</strong>
+        {{form.name(class='form-control')}}
+      </div>
+      <div class="form-group">
+        {{form.contact_no.label()}}
+        {{form.contact_no(class='form-control')}}
+      </div>
+    <div class="form-group">
+        {{form.password.label()}}<strong style="color: red;"> *</strong>
+        {{form.password(class='form-control')}}
+      <small id="emailHelp" class="form-text text-muted">We'll never share your password with anyone else.</small>
+    </div>
+    <div class="form-group">
+        {{form.confirm_password.label()}}<strong style="color: red;"> *</strong>
+        {{form.confirm_password(class='form-control')}}
+      </div>
+    
+    {{form.submit(class='btn btn-primary')}}
+  </form>
+
+</div>
+{% endblock %}
+
+
