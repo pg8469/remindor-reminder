@@ -81,7 +81,7 @@ def add_event():
     form.scheduler_time.data=datetime.now(pytz.timezone('Asia/Calcutta'))
     
     if form.validate_on_submit():
-        event=Event(form.title.data,form.scheduler_time.data,current_user.id)
+        event=Event(form.title.data,timezone.localize(form.scheduler_time.data),current_user.id)
         
         db.session.add(event)
         db.session.commit()
