@@ -33,6 +33,8 @@ padding-right: 10%;">
       
       <span class="card-text">{{"{:02d}:{:02d}".format(h.hour,h.minute)}}</s pan>
       <!-- <a href="#" class="btn btn-primary">Button</a>? -->
+        <br>
+      <a href="{{url_for('core.delete_event',event_id=event.id)}}"><button class="btn btn-danger">Delete</button></a>
 
     </div>
  </div>
