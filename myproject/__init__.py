@@ -47,3 +47,6 @@ login_manager.login_view='core.login'
 
 from myproject.views import core
 app.register_blueprint(core)
+
+from background_script import scheduler
+scheduler.start()
